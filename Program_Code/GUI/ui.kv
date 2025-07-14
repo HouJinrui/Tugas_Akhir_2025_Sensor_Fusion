@@ -1,0 +1,69 @@
+<SensorMonitor>:
+    orientation: 'vertical'
+    padding: 20
+    spacing: 15
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        size_hint_y: None
+        height: self.minimum_height
+
+        GridLayout:
+            cols: 2
+            size_hint_y: None
+            height: 40
+
+            Label:
+                text: "Roll Angle:"
+                font_size: '18sp'
+                bold: True
+            Label:
+                text: root.roll_angle
+                font_size: '28sp'
+                halign: 'right'
+                valign: 'middle'
+                text_size: self.size
+
+        GridLayout:
+            cols: 2
+            size_hint_y: None
+            height: 40
+
+            Label:
+                text: "AS5600 Angle:"
+                font_size: '18sp'
+                bold: True
+            Label:
+                text: root.as5600_angle
+                font_size: '28sp'
+                halign: 'right'
+                valign: 'middle'
+                text_size: self.size
+
+    Label:
+        text: root.status_text
+        font_size: '20sp'
+        size_hint_y: None
+        height: 40
+        canvas.before:
+            Color:
+                rgba: root.status_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+    BoxLayout:
+        size_hint_y: None
+        height: 50
+        spacing: 20
+
+        Button:
+            text: "Start"
+            on_press: root.on_start()
+        Button:
+            text: "Stop"
+            on_press: root.on_stop()
+        Button:
+            text: "Reset"
+            on_press: root.on_reset()
